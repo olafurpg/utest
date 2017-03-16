@@ -1,4 +1,6 @@
 import org.scalajs.core.tools.sem.CheckedBehavior
+import sbtcrossproject.{crossProject, CrossType}
+
 
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
 
@@ -10,7 +12,7 @@ def macroDependencies(version: String) =
    else
      Seq())
 
-lazy val utest = crossProject
+lazy val utest = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     libraryDependencies ++= macroDependencies(scalaVersion.value),
 
@@ -72,6 +74,7 @@ lazy val utest = crossProject
     resolvers += Resolver.sonatypeRepo("snapshots")
   )
 
+lazy val utestNative = utest.native
 lazy val utestJS = utest.js
 lazy val utestJVM = utest.jvm
 
