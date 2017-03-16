@@ -29,7 +29,7 @@ lazy val utest = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     ),
     name := "utest",
     organization := "com.lihaoyi",
-    version := "0.4.5",
+    version := "0.4.5-native",
     scalaVersion := "2.11.8",
     scalacOptions ++= Seq(scalaVersion.value match {
       case x if x.startsWith("2.12.") => "-target:jvm-1.8"
